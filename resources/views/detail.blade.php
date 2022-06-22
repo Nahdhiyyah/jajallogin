@@ -427,7 +427,7 @@
                             </div>
                             <div class="col-lg-12 pt-2">
                                 <h5><b>Deskripsi Buku</b></h5>
-                                <span>{{ $e_books->resensi }}</span>
+                                <span>{!! $e_books->resensi !!}</span>
                                 <hr class="m-0 pt-2 mt-2">
                             </div>
                             <div class="col-lg-12">
@@ -451,23 +451,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-12 text-center pt-3"><br><br>
-                    <h4>Detail Cover</h4>
-                </div>
-            </div>
-            <div class="row mt-3 p-0 text-center pro-box-section">
-                <div class="col-4 pb-3">
-                    <img src="{{Storage::url('public/img/') . $e_books->image }}" class="shadow" width="300px">
-                </div>
-                <div class="col-4 pb-3">
-                    <img src="{{Storage::url('public/img/') . $e_books->image }}" class="shadow" width="300px">
-                </div>
-                <div class="col-4 pb-3">
-                    <img src="{{Storage::url('public/img/') . $e_books->image }}" class="shadow" width="300px">
-                </div>
-            </div>
-        </div>
     </div><br><br>
 
 </body>

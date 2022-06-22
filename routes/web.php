@@ -39,9 +39,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/kontak', function () {
             return view('kontak');
         });
-        // Route::get('/historyPinjam', [PinjamController::class, 'index']);
-        // Route::post('/tabelPinjam', [PinjamController::class, 'store']);
-        // Route::get('/tabel', [PinjamController::class, 'create']);
         Route::resource('pinjam', PinjamController::class);
         Route::get('/baca', function () {
             return view('book');
@@ -50,9 +47,6 @@ Route::middleware('auth')->group(function () {
     
     // Admin
     Route::middleware('role:1')->group(function () {
-        // Route::get('/admin', function () {
-        //     return view('admin');
-        // })->name('admin');
         Route::resource('buku', BukuController::class);
         
     });

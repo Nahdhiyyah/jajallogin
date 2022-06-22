@@ -450,11 +450,6 @@
                                     <td>{{ Auth::user()->email }}</td>
                                 </tr>
                             </table>
-                            {{-- <div class="d-grid gap-2 d-md-flex my-2 ">
-                                <a href="route('pinjam')" class="btn btn-primary" role="button" data-bs-toggle="button"
-                                    style="background-color: #2c3e50; border: none; border-radius: 5px; width: 100px;">Info Baca</a>
-                            </div> --}}
-
                         </div>
                     </div>
                     </div>
