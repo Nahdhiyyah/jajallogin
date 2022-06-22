@@ -440,11 +440,6 @@
                                     <td>{{ Auth::user()->name }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Password </th>
-                                    <th> : </th>
-                                    <td>{{ Auth::user()->password }}</td>
-                                </tr>
-                                <tr>
                                     <th>Email </th>
                                     <th> : </th>
                                     <td>{{ Auth::user()->email }}</td>
