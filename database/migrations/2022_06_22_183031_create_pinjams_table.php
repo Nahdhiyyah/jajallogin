@@ -13,17 +13,14 @@ class CreatePinjamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinjams', function (Blueprint $table) {
+        Schema::create('pinjam', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('buku_id');
+            $table->bigInteger('user_id');
+            $table->bigInteger('buku_id');
             $table->string('judul_buku');
             $table->string('buku');
-            $table->dateTime('waktu_pinjam');
+            $table->date('waktu_pinjam');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('buku_id')->references('id')->on('e_books');
         });
     }
 
@@ -34,6 +31,6 @@ class CreatePinjamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinjams');
+        Schema::dropIfExists('pinjam');
     }
 }
