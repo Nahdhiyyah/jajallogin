@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\API\Auth;
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -28,16 +30,16 @@ class AuthController extends Controller
 
     public function login(Request $request){
         $validateData = $request->validate([
-            'email' => 'email | required | unique:users',
-            'password' => 'required | confirmed',
+            'email' => 'email | required',
+            'password' => 'required',
         ]);
 
-        $login_detail = request(['email', 'password']);
+        $login_detail = $request->only(['email', 'password']);
 
         if (!Auth::attempt([$login_detail])) {
             return response()->json(
                 [
-                    'error' => 'login gagal. cek kembali data anda'
+                    'error' => 'login gagal. cek kembali data anda',
                 ], 401
             );
         }
