@@ -416,28 +416,29 @@
 <body class="antialiased">
     <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-2 sm:pt-0">
-        <div class="col text-center">
-            <img src="/img/logo3.png" alt="" width="300">
-        <h5 style="color: #cbd5e0">Baca Buku Buka Jendela Dunia</h5>
-        </div>
-        @if (Route::has('login'))
-            <div class="hidden fixed top-0 px-6 py-6 sm:block">
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-                @auth
-                    <a href="{{ route('login') }}" class="btn btn-outline-light mx-auto" tabindex="-1" role="button"
-                        aria-disabled="true">Dashboard</a>
-                    
-                @else
-                    <a href="{{ route('login') }}"class="btn btn-light mx-2" style="width: 100px" tabindex="-1"
-                        role="button" aria-disabled="true">Log In</a>
+        <div class="col-md-5 text-center">
+            <div class="card md-3 p-5 shadow border-0">
+                <img src="/img/logo.png" alt="" width="300" class="img-fluid mx-auto">
+                <h5 style="color: #2c3e50" class="mb-5">Baca Buku Buka Jendela Dunia</h5>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="btn btn-outline-light mx-2" style="width: 100px"
-                            tabindex="-1" role="button" aria-disabled="true">Register</a>
-                    @endif
-                @endauth
+                @if (Route::has('login'))
+                    <div class="hidden px-6 py-6 sm:block">
+                        @auth
+                            <a href="{{ route('login') }}" class="btn mx-auto" tabindex="-1"
+                                role="button" aria-disabled="true" style="width: 100px; background-color: #2c3e50">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}"class="btn mx-2 text-light" style="width: 100px; background-color: #2c3e50" tabindex="-1"
+                                role="button" aria-disabled="true">Log In</a>
+
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="btn btn-outline-dark mx-2" style="width: 100px"
+                                    tabindex="-1" role="button" aria-disabled="true" style="background-color: #2c3e50; border:none">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
             </div>
-        @endif
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">

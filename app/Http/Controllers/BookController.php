@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\eBook;
+use Illuminate\Support\Facades\Log;
 
 class BookController extends Controller
 {
@@ -15,6 +16,7 @@ class BookController extends Controller
     public function index()
     {
         $book = eBook::all();
+        Log::info('Showing the list of book');
         return view('dashboard')->with('e_books', $book);
     }
 

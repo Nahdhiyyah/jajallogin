@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Pinjam;
 use App\Models\eBook;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 
 class PinjamController extends Controller
@@ -56,11 +57,11 @@ class PinjamController extends Controller
         $pinjams->judul_buku = $request->judul_buku;
         $pinjams->buku = $request->buku;
         $pinjams->waktu_pinjam = $request->waktu_pinjam;
+        $pinjams->petugas = $request->petugas;
 
-        // $x = DB::table('users')->where('user_id', $pinjams->user_id);
-        // $pinjams->buku_id = $x->value('buku_id');
 
         $pinjams->save();
+        Log::info('kamu berhasil meminjam buku!');
         return redirect('pinjam');
 
     }

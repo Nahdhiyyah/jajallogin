@@ -10,9 +10,9 @@
     <title>Baca Buku</title>
     <style>
         iframe {
-            display:block;
-            width:100%;
-            height:90vh;
+            display: block;
+            width: 100%;
+            height: 90vh;
         }
     </style>
 </head>
@@ -21,13 +21,13 @@
     <x-app-layout>
         <x-slot name="header">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Selamat Membaca') }}
+                {{ __('Selamat Membaca') }} <b>{{ $pinjam->judul_buku }}</b>
             </h2>
         </x-slot>
         <div class="well text-center">
             <div class="embed-responsive embed-responsive-21by9">
-                <iframe class="embed-responsive-item" src="/eBook/{{$pinjam->buku}}#toolbar=0"
-                    allowfullscreen frameborder="0"></iframe>
+                <iframe class="embed-responsive-item" src="/eBook/{{ $pinjam->buku }}#toolbar=0" allowfullscreen
+                    frameborder="0"></iframe>
             </div>
         </div>
     </x-app-layout>

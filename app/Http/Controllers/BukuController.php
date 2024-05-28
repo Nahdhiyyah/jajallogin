@@ -54,9 +54,11 @@ class BukuController extends Controller
 
     if($buku){
         //redirect dengan pesan sukses
+        Log::info('success!');
         return redirect()->route('buku.index')->with(['success' => 'Data Berhasil Disimpan!']);
     }else{
         //redirect dengan pesan error
+        Log::info('warning!');
         return redirect()->route('buku.index')->with(['error' => 'Data Gagal Disimpan!']);
     }
     }

@@ -460,6 +460,13 @@
                             placeholder="Waktu">
                     </div>
                 </div>
+                <div class="form-row my-2 mx-3">
+                    <div class="form-group">
+                        <label for="petugas">Nama Petugas</label>
+                        <input type="text" name="petugas" class="form-control" id="petugas"
+                            placeholder="petugas">
+                    </div>
+                </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button type="submit" style="width: 100px; background-color:#2c3e50; border:none"
                         class="btn btn-primary my-4 content-justify-end"

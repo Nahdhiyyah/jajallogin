@@ -411,15 +411,13 @@
         <div class="content" style=" height:500px;">
             <div class="container">
                 <div class="col">
-                    <br>
-                    <div class="row my-2">
+                    <div class="row card mt-5 border-0 shadow p-5">
                         <p class="text-center my-4" style="color: #2c3e50; font-size:25px;">Info Baca</p>
-                    </div>
-                    <div class="row">
+
                         <table class="table table-hover text-center">
                             <thead>
                                 <tr>
-                                    <th scope="col">#</th>
+                                    <th scope="col">No</th>
                                     <th scope="col">Judul Buku</th>
                                     <th scope="col">Waktu Pembacaan</th>
                                     <th scope="col" colspan="2">Aksi</th>
@@ -427,59 +425,65 @@
                             </thead>
 
                             <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
                                 @foreach ($pinjams as $pinjam => $value)
-                                    <tr>
-                                        <th scope="row">{{$value->id}}</th>
-                                        <td>{{ $value->judul_buku }}</td>
-                                        <td>{{ $value->created_at }}</td>
-                                        <td colspan="2">
-                                            <form onsubmit="return confirm('Apakah Anda Yakin untuk melakukan proses ini?');"
-                                                action="{{ route('pinjam.destroy', $value->id) }}" method="POST">
-                                                <a href="/pinjam/{{ $value->id }}" class="btn">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                        height="16" fill="#2c3e50" class="bi bi-book-half"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
-                                                    </svg>
-                                                </a>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16"
-                                                        height="16" fill="red" class="bi bi-trash"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                                                        <path fill-rule="evenodd"
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-                                                    </svg>
-                                                </button>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                    @if (Auth::user()->id == $value->user_id)
+                                        <tr>
+                                            <th scope="row">{{ $no++ }}</th>
+                                            <td>{{ $value->judul_buku }}</td>
+                                            <td>{{ $value->created_at }}</td>
+                                            <td colspan="2">
+                                                <form
+                                                    onsubmit="return confirm('Apakah Anda Yakin untuk melakukan proses ini?');"
+                                                    action="{{ route('pinjam.destroy', $value->id) }}" method="POST">
+                                                    <a href="/pinjam/{{ $value->id }}" class="btn">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="#2c3e50" class="bi bi-book-half"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                                                        </svg>
+                                                    </a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="red" class="bi bi-trash"
+                                                            viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                            <path fill-rule="evenodd"
+                                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                        </svg>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
 
                         </table>
                     </div>
+                    {{-- </div> --}}
                 </div>
             </div>
         </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        {{-- <script>
-        //message with toastr
-        @if (session()->has('success'))
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+            //message with toastr
+            @if (session()->has('success'))
 
-            toastr.success('{{ session('success') }}', 'BERHASIL!');
-        @elseif
-            (session()->has('error'));
+                toastr.success('{{ session('success') }}', 'BERHASIL!');
+            @elseif (session()->has('error'));
 
-            toastr.error('{{ session('error') }}', 'GAGAL!');
-        @endif
-    </script> --}}
+                toastr.error('{{ session('error') }}', 'GAGAL!');
+            @endif
+        </script>
     </x-app-layout>
 </body>
 

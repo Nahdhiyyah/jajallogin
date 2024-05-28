@@ -11,7 +11,7 @@ class Pinjam extends Model
     protected $table = 'pinjam';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'id', 'user_id', 'buku_id', 'judul_buku', 'buku', 'waktu_pinjam'
+        'id', 'user_id', 'buku_id', 'judul_buku', 'buku', 'waktu_pinjam', 'petugas'
     ];
     // public function users(){
     //     return $this->belongTo(Auth::user());
